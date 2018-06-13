@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+const blah = 'test';
+
 // Components
 import TabInfo from './TabInfo';
 import classNames from 'classnames';
