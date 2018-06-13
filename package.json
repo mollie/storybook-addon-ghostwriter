@@ -1,0 +1,42 @@
+{
+  "name": "@mollie/storybook-addon-ghostwriter",
+  "version": "0.0.1",
+  "description": "Storybook addon which helps you writing stories.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mollie/storybook-addon-ghostwriter.git"
+  },
+  "author": "Marino Linderhof",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mollie/storybook-addon-ghostwriter/issues"
+  },
+  "homepage": "https://github.com/mollie/storybook-addon-ghostwriter#readme",
+  "peerDependencies": {
+    "@storybook/addon-actions": "^3.4.5",
+    "@storybook/addon-info": "^3.4.7",
+    "@storybook/addon-knobs": "^3.4.5",
+    "@storybook/addons": "^3.4.6",
+    "storybook-addon-intl": "^2.3.0",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.1",
+    "react": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "rollup": "^0.60.1",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-copy": "^0.2.3",
+    "rollup-plugin-css-only": "^0.4.0"
+  }
+}
