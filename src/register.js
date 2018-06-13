@@ -48,13 +48,13 @@ storiesOf('UI', module)
 
 addons.register('mollie/ghostwriter', () => {
   addons.addPanel('mollie/ghostwriter/panel', {
-    title: 'Mollie Ghostwriter',
+    title: 'Ghostwriter',
     render: () => (
       <div style={{ width: '100%', padding: '2%' }}>
         <div style={{ maxWidth: '200px' }}>
           <MollieLogo />
         </div>
-        <p>Mollie Ghostwriter is an opinionated way of writing your stories.</p>
+        <p>Ghostwriter is an opinionated way of writing your stories.</p>
         <h3>Code Snippet</h3>
         <pre style={{ whiteSpace: 'pre-wrap' }}>
           <code>{codeSnippet}</code>

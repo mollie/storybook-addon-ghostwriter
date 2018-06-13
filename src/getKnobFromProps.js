@@ -3,8 +3,6 @@ import { isNotEmpty } from './util';
 import { number, boolean, select, text, object } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-// import { text, boolean, number, select, color, object, array } from '@storybook/addon-knobs';
-
 const blackList = ['intl'];
 
 const getKnob = ({ propType, property, defaultValue }, isRequired) => {
@@ -44,7 +42,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
     }
 
     /**
-     * a string will return a number knob
+     * a number will return a number knob
      */
     case 'number': {
       const defaultNumber = defaultValue || false;
@@ -76,7 +74,6 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
 
     /**
      * Union a bit of a hassle becuase it exist in Flow as in PropType and that a bit different
-     * Todo fix this for PropTypes
      */
     case 'union': {
       // if propType.value then it's a proptype instead of flowtyped
