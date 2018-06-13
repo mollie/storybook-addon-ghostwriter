@@ -36,7 +36,6 @@
     "babel-preset-react": "^6.24.1",
     "rollup": "^0.60.1",
     "rollup-plugin-babel": "^3.0.4",
-    "rollup-plugin-copy": "^0.2.3",
-    "rollup-plugin-css-only": "^0.4.0"
+    "rollup-plugin-copy": "^0.2.3"
   }
 }
