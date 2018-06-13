@@ -1,7 +1,7 @@
 {
   "name": "@mollie/storybook-addon-ghostwriter",
   "version": "0.0.1",
-  "description": "Storybook addon which helps you writing stories.",
+  "description": "Storybook addon which helps you write stories faster",
   "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
@@ -22,7 +22,6 @@
     "@storybook/addon-info": "^3.4.7",
     "@storybook/addon-knobs": "^3.4.5",
     "@storybook/addons": "^3.4.6",
-    "storybook-addon-intl": "^2.3.0",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
     "react": "*"
@@ -37,5 +36,8 @@
     "rollup": "^0.60.1",
     "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-copy": "^0.2.3"
+  },
+  "optionalDependencies": {
+    "storybook-addon-intl": "^2.3.0"
   }
 }
