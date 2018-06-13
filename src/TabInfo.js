@@ -65,17 +65,6 @@ export class tabInfo extends React.Component {
     return EnhancedComponent;
   };
 
-  withIntlWrapper(component) {
-    try {
-      const { withIntl } = require('storybook-addon-intl');
-
-      // add intl wrapper
-      return withIntl(() => component);
-    } catch (err) {
-      return component;
-    }
-  }
-
   render() {
     const { context, additionalContext, markdown } = this.props;
     const enhancedComponent = this.getEnhancedComponent();
@@ -83,14 +72,12 @@ export class tabInfo extends React.Component {
     // add the info wrapper
     const withInfoComp = withInfo(markdown)(() => enhancedComponent)(context);
 
-    const withIntlComp = this.withIntlWrapper(withInfoComp);
-
     return (
       <div className="c-ghostwriter--tab-info">
         {additionalContext && (
           <div className="c-ghostwriter--tab-info-additional-context">{additionalContext}</div>
         )}
-        {withIntlComp}
+        {withInfoComp}
       </div>
     );
   }
