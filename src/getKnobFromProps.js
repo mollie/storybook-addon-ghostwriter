@@ -45,14 +45,13 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
      * a number will return a number knob
      */
     case 'number': {
-      const defaultNumber = defaultValue || false;
-      const numberKnob = number(property, defaultNumber || 0);
+      const numberKnob = number(property, defaultValue || 0);
 
       if (isRequired) {
         return numberKnob || 0;
       }
 
-      return numberKnob > 0 ? numberKnob : false;
+      return numberKnob > 0 ? numberKnob : undefined;
     }
 
     /**
@@ -60,7 +59,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
      */
     case 'bool':
     case 'boolean': {
-      const value = defaultValue === 'true' || false;
+      const value = defaultValue === 'true';
 
       return boolean(property, value);
     }
