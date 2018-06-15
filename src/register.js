@@ -12,7 +12,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 // story components
-import ghostwriter from '@mollie/storybook-addon-ghostwriter';
+import ghostwriter from 'storybook-addon-ghostwriter';
 
 // Component
 import YOUR_COMPONENT from './index';
