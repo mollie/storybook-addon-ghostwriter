@@ -1,5 +1,5 @@
 {
-  "name": "@mollie/storybook-addon-ghostwriter",
+  "name": "storybook-addon-ghostwriter",
   "version": "0.0.1",
   "description": "Storybook addon which helps you write stories faster",
   "main": "dist/index.js",
