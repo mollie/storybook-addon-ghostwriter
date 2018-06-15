@@ -69,3 +69,15 @@ storiesOf('UI', module)
     );
   });
 ```
+
+## Contributing
+
+Want to help us make our API client even better? We take [pull requests](https://github.com/mollie/mollie-api-node/pulls).
+
+## Working at Mollie
+
+Mollie is always looking for new talent to join our teams. We’re looking for inquisitive minds with good ideas and strong opinions, and, most importantly, who know how to ship great products. Want to join the future of payments? [Check out our vacancies](https://mollie.homerun.co/).
+
+## License
+
+[New BSD (Berkeley Software Distribution) License](https://opensource.org/licenses/BSD-3-Clause). Copyright 2013-2017, Mollie B.V.
