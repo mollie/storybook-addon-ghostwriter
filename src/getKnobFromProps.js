@@ -1,9 +1,9 @@
-import React from "react";
-import { isNotEmpty } from "./util";
-import { number, boolean, select, text, object } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
+import React from 'react';
+import { isNotEmpty } from './util';
+import { number, boolean, select, text, object } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
-const blackList = ["intl"];
+const blackList = ['intl'];
 
 const getKnob = ({ propType, property, defaultValue }, isRequired) => {
   // If property is blacklisted, simply return a string instead of full object
@@ -14,33 +14,31 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
   // This will switch through all flow types/PropTypes that are given by reactdocgen
   switch (propType.name) {
     // A node will return a <span /> with text knob
-    case "Node":
-    case "node":
-    case "ReactElement":
-    case "ReactNode": {
+    case 'Node':
+    case 'node':
+    case 'ReactElement':
+    case 'ReactNode': {
       let showChild = true;
 
       if (!isRequired) {
         showChild = boolean(`Enable child: ${property}`, true);
       }
-      return (
-        showChild && <span>{text(property, `prop text: ${property}`)}</span>
-      );
+      return showChild && <span>{text(property, `prop text: ${property}`)}</span>;
     }
 
     // A string will return a text knob
-    case "string": {
-      const defaultText = defaultValue && defaultValue.replace(/'/g, "");
+    case 'string': {
+      const defaultText = defaultValue && defaultValue.replace(/'/g, '');
 
       if (isRequired) {
-        return text(property, defaultText || "defaultText");
+        return text(property, defaultText || 'defaultText');
       }
 
-      return text(property, defaultText || "");
+      return text(property, defaultText || '');
     }
 
     // A number will return a number knob
-    case "number": {
+    case 'number': {
       const numberKnob = number(property, defaultValue || 0);
 
       if (isRequired) {
@@ -51,78 +49,63 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
     }
 
     // A boolean will return a boolean knob
-    case "bool":
-    case "boolean": {
-      const value = defaultValue === "true";
+    case 'bool':
+    case 'boolean': {
+      const value = defaultValue === 'true';
 
       return boolean(property, value);
     }
 
     // Whenever there is a function we can we return an action()
-    case "func":
-    case "Function":
+    case 'func':
+    case 'Function':
       return action(property);
 
     // Unions are present in both Flow types and PropTypes. Will return a select
-    case "union": {
+    case 'union': {
       // If propType.value exosts then a PropType is used instead of a Flow type
       if (propType.value) {
         // Prototype unions will never be all literal
-        return getKnob(
-          { propType: propType.value[0], property, defaultValue },
-          isRequired,
-        );
+        return getKnob({ propType: propType.value[0], property, defaultValue }, isRequired);
       }
 
       // Check if PropType contains all strings. Otherwise, get the first one
-      const allLiteral =
-        propType.elements && propType.elements.every(x => x.name === "literal");
+      const allLiteral = propType.elements && propType.elements.every(x => x.name === 'literal');
 
       if (allLiteral) {
-        let value = defaultValue && defaultValue.replace(/'/g, "");
+        let value = defaultValue && defaultValue.replace(/'/g, '');
 
         if (!value && property.required) {
-          value = propType.elements[0].replace(/'/g, "");
+          value = propType.elements[0].replace(/'/g, '');
         }
 
         if (!defaultValue && !property.required) {
-          propType.elements.push("");
-          value = "";
+          propType.elements.push('');
+          value = '';
         }
 
-        return select(
-          property,
-          propType.elements.map(x => x.value.replace(/'/g, "")),
-          value,
-        );
+        return select(property, propType.elements.map(x => x.value.replace(/'/g, '')), value);
       }
 
       // When it's not all literal or strings, return a new know (the first of the array)
-      return getKnob(
-        { propType: propType.elements[0], property, defaultValue },
-        isRequired,
-      );
+      return getKnob({ propType: propType.elements[0], property, defaultValue }, isRequired);
     }
 
     // Enums will return a select with all the values given by the PropTypes
-    case "enum": {
-      let value = defaultValue && defaultValue.replace(/'/g, "");
+    case 'enum': {
+      let value = defaultValue && defaultValue.replace(/'/g, '');
       const propTypeValues = [...propType.value];
 
       if (!value && property.required) {
-        value = propTypeValues[0].replace(/'/g, "");
+        value = propTypeValues[0].replace(/'/g, '');
       }
 
       if (!defaultValue && !property.required) {
-        propTypeValues.push({ value: "" });
-        value = "";
+        propTypeValues.push({ value: '' });
+        value = '';
       }
 
-      return select(
-        property,
-        propTypeValues.map(x => x.value.replace(/'/g, "")),
-        value,
-      );
+      return select(property, propTypeValues.map(x => x.value.replace(/'/g, '')), value);
     }
 
     /**
@@ -130,7 +113,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
      *
      * @todo: recognize boolean and add that as value instead of value: 'bool'
      */
-    case "arrayOf": {
+    case 'arrayOf': {
       const values = propType.value.value;
 
       const exampleObject = Object.keys(values).reduce((acc, key) => {
@@ -148,12 +131,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
      */
     default:
       /* eslint-disable-next-line */
-      console.warn(
-        "could not handle prop: ",
-        property,
-        " with properties:",
-        propType,
-      );
+      console.warn('could not handle prop: ', property, ' with properties:', propType);
       return;
   }
 };
