@@ -38,7 +38,6 @@ export class tabInfo extends React.Component {
 
     if (!hasDocgen(component)) {
       /* eslint-disable-next-line */
-      console.dir(component);
       console.error(
         "There is no docgen info found on the component;\nmost likely this is because the babel loader isn't initiated properly.\nCheck if the babel loader plugins contains: 'react-docgen'",
       );
