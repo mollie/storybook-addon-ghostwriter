@@ -47,13 +47,6 @@
   "optionalDependencies": {
     "storybook-addon-intl": "^2.3.0"
   },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "bracketSpacing": true,
-    "jsxBracketSameLine": true
-  },
   "lint-staged": {
     "src/*.{js,jsx,json}": [
       "eslint",
