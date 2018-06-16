@@ -48,7 +48,7 @@ class Ghostwriter extends React.Component {
             type="button"
             className={getClass(currentTab === 'context')}
             onClick={this.changeTab('context')}>
-            context
+            Context
           </button>
         </div>
         <div className="c-ghostwriter--content">{content}</div>
