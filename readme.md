@@ -72,11 +72,11 @@ storiesOf('UI', module)
 
 ## Contributing
 
-Want to help us make our API client even better? We take [pull requests](https://github.com/mollie/mollie-api-node/pulls).
+Want to help us make our API client even better? We take [pull requests](https://github.com/mollie/storybook-addon-ghostwriter/pulls).
 
 ## Working at Mollie
 
-Mollie is always looking for new talent to join our teams. We’re looking for inquisitive minds with good ideas and strong opinions, and, most importantly, who know how to ship great products. Want to join the future of payments? [Check out our vacancies](https://mollie.homerun.co/).
+Mollie is always looking for new talent to join our teams. We’re looking for inquisitive minds with good ideas and strong opinions, and, most importantly, who know how to ship great products. Want to join the future of payments? [Check out our vacancies](https://jobs.mollie.com).
 
 ## License
 
