@@ -5,7 +5,8 @@ import '@storybook/addon-actions/register';
 import '@storybook/addon-knobs/register';
 
 // components
-const MollieLogo = require('./mollie-logo.svg');
+const MollieLogoSVG = require('./mollie-logo.svg');
+const MollieLogo = () => <img src={MollieLogoSVG} alt="Mollie" />;
 
 const codeSnippet = `
 import React from 'react';
