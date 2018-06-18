@@ -4,9 +4,38 @@ import addons from '@storybook/addons';
 import '@storybook/addon-actions/register';
 import '@storybook/addon-knobs/register';
 
-// components
+const SYSTEM_FONT_STACK =
+  '-apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", "Lucida Grande", Arial, sans-serif';
+
 const MollieLogoSVG = require('./mollie-logo.svg');
-const MollieLogo = () => <img src={MollieLogoSVG} alt="Mollie" />;
+
+const PoweredByMollie = () => (
+  <div
+    style={{
+      textAlign: 'center',
+      fontFamily: SYSTEM_FONT_STACK,
+      marginTop: '35px',
+      borderTop: '1px solid #ededed',
+    }}>
+    <div
+      style={{
+        fontSize: '9px',
+        letterSpacing: '1px',
+        textTransform: 'uppercase',
+        marginTop: '35px',
+      }}>
+      Powered by
+    </div>
+    <img
+      src={MollieLogoSVG}
+      alt="Mollie"
+      style={{
+        width: 'auto',
+        height: '20px',
+      }}
+    />
+  </div>
+);
 
 const codeSnippet = `
 import React from 'react';
@@ -40,8 +69,8 @@ storiesOf('UI', module)
       <div>
         <p>Put your component in context. Like:</p> 
         <p>this is a component in the wild!</p>
-        <div style={{backgroundColor:'#232c56'}}>
-          <YOUR_COMPONENT>
+        <div style={{backgroundColor:'#000',padding:'40px',borderRadius:'4px',textAlign:'center'}}>
+          <YOUR_COMPONENT />
         </div>
       </div>
     );
@@ -51,15 +80,44 @@ addons.register('mollie/ghostwriter', () => {
   addons.addPanel('mollie/ghostwriter/panel', {
     title: 'Ghostwriter',
     render: () => (
-      <div style={{ width: '100%', padding: '2%' }}>
-        <div style={{ maxWidth: '200px' }}>
-          <MollieLogo />
-        </div>
-        <p>Ghostwriter is an opinionated way of writing your stories.</p>
-        <h3>Code Snippet</h3>
-        <pre style={{ whiteSpace: 'pre-wrap' }}>
+      <div
+        style={{
+          width: '100%',
+          padding: '2%',
+          fontFamily: SYSTEM_FONT_STACK,
+        }}>
+        <p
+          style={{
+            fontFamily: 'Arial',
+            fontSize: '14px',
+          }}>
+          Ghostwriter is an opinionated way of writing your stories.
+        </p>
+        <h3
+          style={{
+            color: 'rgb(190, 190, 190)',
+            textTransform: 'uppercase',
+            fontSize: '16px',
+            fontWeight: 500,
+          }}>
+          Code Snippet
+        </h3>
+        <pre
+          style={{
+            fontFamily: 'SFMono, Consolas, Liberation Mono, Menlo, Courier, monospace',
+            whiteSpace: 'pre-wrap',
+            border: '1px solid #e6e6e6',
+            borderRadius: '4px',
+            marginBottom: '40px',
+            display: 'block',
+            padding: '30px',
+            overflow: 'scroll',
+            color: '#595959',
+            background: '#fcfcfc',
+          }}>
           <code>{codeSnippet}</code>
         </pre>
+        <PoweredByMollie />
       </div>
     ),
   });

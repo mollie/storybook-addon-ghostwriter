@@ -6,18 +6,45 @@ Looking for a way to interactively document all variants of your React component
 
 Sometimes simply rendering your component on its own doesn't explain its purpose. Ghostwriter allows you to demonstrate your components both on its own and in context (by wrapping the component in components).
 
+## Dependencies
+
+Please make sure you have the following peer dependencies installed:
+
+- `babel-plugin-react-docgen`
+- `@storybook/addon-actions`
+- `@storybook/addon-info`
+- `@storybook/addon-knobs`
+- `@storybook/addons`
+- `lodash`
+- `react`
+
 ## Installation
 
 Add Ghostwriter as a `devDependency` to your project using NPM:
 
-```
+```bash
 npm install --save-dev storybook-addon-ghostwriter
 ```
 
 Or, if you prefer Yarn:
 
-```
+```bash
 yarn add --dev storybook-addon-ghostwriter
+```
+
+Add the following line to your `.babelrc` file:
+
+```json
+{
+  "plugins": [
+    [
+      "react-docgen",
+      {
+        "resolver": "findAllComponentDefinitions"
+      }
+    ]
+  ]
+}
 ```
 
 ## Writing stories
