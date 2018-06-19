@@ -11,10 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/mollie/storybook-addon-ghostwriter.git"
+    "url": "https://github.com/mollie/storybook-addon-ghostwriter.git"
   },
-  "author": "Marino Linderhof",
-  "license": "ISC",
+  "author": {
+    "name": "Marino Linderhof"
+  },
+  "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/mollie/storybook-addon-ghostwriter/issues"
   },

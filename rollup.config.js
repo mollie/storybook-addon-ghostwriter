@@ -1,6 +1,6 @@
-var rollup = require('rollup');
-var babel = require('rollup-plugin-babel');
-var copy = require('rollup-plugin-copy');
+const rollup = require('rollup');
+const babel = require('rollup-plugin-babel');
+const copy = require('rollup-plugin-copy');
 
 export default [
   {
