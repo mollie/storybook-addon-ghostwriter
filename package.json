@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-ghostwriter",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Storybook addon which helps you write stories faster",
   "main": "dist/index.js",
   "scripts": {
