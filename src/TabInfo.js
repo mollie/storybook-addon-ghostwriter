@@ -68,7 +68,6 @@ export class TabInfo extends React.Component {
   render() {
     const { context, additionalContext, markdown } = this.props;
     const enhancedComponent = this.getEnhancedComponent();
-
     // add the info wrapper
     const withInfoComp = withInfo(markdown)(() => enhancedComponent)(context);
 

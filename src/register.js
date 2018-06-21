@@ -1,8 +1,12 @@
 import React from 'react';
 import addons from '@storybook/addons';
 
-import '@storybook/addon-actions/register';
+/**
+ * Register all the add-ons Ghostwriter needs
+ * Order matters first will be the first panel and therefore active.
+ */
 import '@storybook/addon-knobs/register';
+import '@storybook/addon-actions/register';
 
 const SYSTEM_FONT_STACK =
   '-apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", "Lucida Grande", Arial, sans-serif';
