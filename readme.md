@@ -1,5 +1,7 @@
 <h1 align="center">Storybook Addon Ghostwriter</h1>
 
+<img src=".github/art/screenshot.jpg" />
+
 ## Motivation
 
 Storybook Addon Ghostwriter allows you to write your Storybook stories faster. Your codebase changes continuously and you don't want to update your Storybook stories every time your components change. Ghostwriter extracts your components’ `PropTypes` / `Flow types` and allows you to edit React props dynamically using the Storybook UI. Your components get documented automatically by providing a static overview of the available props. Ghostwriter generates code snippets for both your component and your Storybook stories, allowing you to ship new components faster.
