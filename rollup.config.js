@@ -5,10 +5,7 @@ const copy = require('rollup-plugin-copy');
 export default [
   {
     input: 'src/index.js',
-    plugins: [
-      babel(),
-      copy({ 'src/mollie-logo.svg': 'dist/mollie-logo.svg', 'src/styles.css': 'dist/styles.css' }),
-    ],
+    plugins: [babel(), copy({ 'src/styles.css': 'dist/styles.css' })],
     output: {
       file: 'dist/index.js',
       format: 'cjs',

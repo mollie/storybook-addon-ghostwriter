@@ -11,36 +11,6 @@ import '@storybook/addon-actions/register';
 const SYSTEM_FONT_STACK =
   '-apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", "Lucida Grande", Arial, sans-serif';
 
-const MollieLogoSVG = require('./mollie-logo.svg');
-
-const PoweredByMollie = () => (
-  <div
-    style={{
-      textAlign: 'center',
-      fontFamily: SYSTEM_FONT_STACK,
-      marginTop: '35px',
-      borderTop: '1px solid #ededed',
-    }}>
-    <div
-      style={{
-        fontSize: '9px',
-        letterSpacing: '1px',
-        textTransform: 'uppercase',
-        marginTop: '35px',
-      }}>
-      Powered by
-    </div>
-    <img
-      src={MollieLogoSVG}
-      alt="Mollie"
-      style={{
-        width: 'auto',
-        height: '20px',
-      }}
-    />
-  </div>
-);
-
 const codeSnippet = `import React from 'react';
 import { storiesOf } from '@storybook/react';
 
@@ -146,7 +116,6 @@ addons.register('mollie/ghostwriter', () => {
           }}>
           <code>{codeSnippet}</code>
         </pre>
-        <PoweredByMollie />
       </div>
     ),
   });
