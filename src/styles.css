@@ -3,7 +3,7 @@
   position: relative;
 }
 
-/* badge of a div styling */
+/* Badge of a div styling */
 .c-ghostwriter--tab-info-additional-context::after,
 .c-ghostwriter--tab-info > div > div:last-child::after,
 .c-ghostwriter--tab-info > div > div:first-child::after {
@@ -28,7 +28,7 @@
   display: block;
 }
 
-/* select the isolated/pure component div  */
+/* Select the isolated/pure component div  */
 .c-ghostwriter--tab-info-additional-context,
 .c-ghostwriter--tab-info > div > div:first-child {
   font-size: 15px;
@@ -45,17 +45,17 @@
   display: none;
 }
 
-/* set content of the badge */
+/* Set content of the badge */
 .c-ghostwriter--tab-info > div > div:first-child::after {
   content: 'Component output';
 }
 
-/* select the info div */
+/* Select the info div */
 .c-ghostwriter--tab-info > div > div:last-child {
   position: relative;
 }
 
-/* set content of the badge */
+/* Set content of the badge */
 .c-ghostwriter--tab-info > div > div:last-child::after {
   content: 'Info about component';
 }

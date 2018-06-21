@@ -41,11 +41,10 @@ const PoweredByMollie = () => (
   </div>
 );
 
-const codeSnippet = `
-import React from 'react';
+const codeSnippet = `import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-// story components
+// Story components
 import ghostwriter from 'storybook-addon-ghostwriter';
 
 // Component
@@ -58,13 +57,13 @@ const markdown = \`# Markdown example\`;
 storiesOf('UI', module)
   .addDecorator(
     ghostwriter({
-      // don't use the '< >' just the component
+      // Don't use the '< >' just the component
       component: YOUR_COMPONENT,
       // This overwrites the knobs by docs
       componentProps: getDefaultProps,
-      // extra info
+      // Extra info
       markdown: markdown,
-      // sometime you need some additionalContext (like a button to open a dialog)
+      // Sometimes you need some additionalContext (like a button to open a dialog)
       additionalContext: <div>Hi there i'll render normal JSX</div>
 }),
   )
