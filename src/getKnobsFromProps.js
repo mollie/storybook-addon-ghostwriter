@@ -3,9 +3,14 @@ import { isNotEmpty } from './util';
 import { number, boolean, select, text, object } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
+/**
+ * Blacklist is used for properties that we want to exclude as knob
+ * @todo: Make this configurable and test with connect components
+ * @todo: Make blacklist also for enhancement
+ */
 const blackList = ['intl'];
 
-//
+// Strip out a single qoute from a string
 const singleQuoteStripper = string => string.replace(/'/g, '');
 
 const getKnob = ({ propType, property, defaultValue }, isRequired) => {
