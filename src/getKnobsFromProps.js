@@ -5,6 +5,9 @@ import { action } from '@storybook/addon-actions';
 
 const blackList = ['intl'];
 
+//
+const singleQuoteStripper = string => string.replace(/'/g, '');
+
 const getKnob = ({ propType, property, defaultValue }, isRequired) => {
   // If property is blacklisted, simply return a string instead of full object
   if (blackList.includes(property)) {
@@ -28,7 +31,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
 
     // A string will return a text knob
     case 'string': {
-      const defaultText = defaultValue && defaultValue.replace(/'/g, '');
+      const defaultText = defaultValue && singleQuoteStripper(defaultValue);
 
       if (isRequired) {
         return text(property, defaultText || 'defaultText');
@@ -73,10 +76,10 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
       const allLiteral = propType.elements && propType.elements.every(x => x.name === 'literal');
 
       if (allLiteral) {
-        let value = defaultValue && defaultValue.replace(/'/g, '');
+        let value = defaultValue && singleQuoteStripper(defaultValue);
 
         if (!value && property.required) {
-          value = propType.elements[0].replace(/'/g, '');
+          value = singleQuoteStripper(propType.elements[0]);
         }
 
         if (!defaultValue && !property.required) {
@@ -84,7 +87,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
           value = '';
         }
 
-        return select(property, propType.elements.map(x => x.value.replace(/'/g, '')), value);
+        return select(property, propType.elements.map(x => singleQuoteStripper(x.value)), value);
       }
 
       // When it's not all literal or strings, return a new know (the first of the array)
@@ -93,11 +96,11 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
 
     // Enums will return a select with all the values given by the PropTypes
     case 'enum': {
-      let value = defaultValue && defaultValue.replace(/'/g, '');
+      let value = defaultValue && singleQuoteStripper(defaultValue);
       const propTypeValues = [...propType.value];
 
       if (!value && property.required) {
-        value = propTypeValues[0].replace(/'/g, '');
+        value = singleQuoteStripper(propTypeValues[0]);
       }
 
       if (!defaultValue && !property.required) {
@@ -105,7 +108,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
         value = '';
       }
 
-      return select(property, propTypeValues.map(x => x.value.replace(/'/g, '')), value);
+      return select(property, propTypeValues.map(x => singleQuoteStripper(x.value)), value);
     }
 
     /**
@@ -127,7 +130,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
     /**
      * When we can't figure out what to do we pass this as a warning to the console
      *
-     * @todo: We should either remove this or put it behind a feature flag
+     * @todo: We should either remove this or put it behind a debug flag
      */
     default:
       /* eslint-disable-next-line */
@@ -138,7 +141,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
 
 const isRequired = prop => prop.propType.required || prop.required || false;
 
-const geKnobProps = propsFromDocgen => {
+const getKnobsFromProps = propsFromDocgen => {
   if (isNotEmpty(propsFromDocgen)) {
     return {};
   }
@@ -159,4 +162,4 @@ const geKnobProps = propsFromDocgen => {
   return knobProps;
 };
 
-export default geKnobProps;
+export default getKnobsFromProps;

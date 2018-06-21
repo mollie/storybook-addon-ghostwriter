@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { withInfo } from '@storybook/addon-info';
 import getPropsFromDocgen from './getPropsFromDocgen';
-import getKnobsFromProps from './getKnobFromProps';
+import getKnobsFromProps from './getKnobsFromProps';
 import { omit, isFunction } from 'lodash';
 import { hasDocgen, getDocgenInfo, getComponentName } from './util';
 
