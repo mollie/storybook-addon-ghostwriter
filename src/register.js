@@ -47,37 +47,63 @@ import { storiesOf } from '@storybook/react';
 // Story components
 import ghostwriter from 'storybook-addon-ghostwriter';
 
-// Component
-import YOUR_COMPONENT from './index';
+// This is an example component.
+import PropTypes from 'prop-types';
+
+export default class ExampleComponent extends React.Component {
+  render() {
+    const { className, propName, children } = this.props;
+    return (
+      <div className={className}>
+        <strong>{propName}</strong> {children}
+      </div>
+    );
+  }
+}
+
+ExampleComponent.propTypes = {
+  className: PropTypes.string,
+  propName: PropTypes.string.isRequired,
+  children: PropTypes.element,
+};
 
 // Overwrite of default props This could be a knob form the knob addon
-const getDefaultProps = () => ({prop:'overwrite'});
+const getDefaultProps = () => ({ className: 'overwrite' });
 const markdown = \`# Markdown example\`;
 
-storiesOf('UI', module)
+storiesOf('components', module)
   .addDecorator(
     ghostwriter({
-      // Don't use the '< >' just the component
-      component: YOUR_COMPONENT,
+      // Notice that we dont use angle brackets; '<' and '>'
+      component: ExampleComponent,
       // This overwrites the knobs by docs
       componentProps: getDefaultProps,
       // Extra info
       markdown: markdown,
-      // Sometimes you need some additionalContext (like a button to open a dialog)
-      additionalContext: <div>Hi there i'll render normal JSX</div>
-}),
+      // Sometimes you need some additionalContext (for example: a button to open a dialog by ref)
+      additionalContext: <span>i'll render normal JSX</span>,
+    }),
   )
-  .add('YOUR_COMPONENT', () => {
+  .add('ExampleComponent', () => {
     return (
       <div>
-        <p>Put your component in context. Like:</p> 
+        <p>Put your component in context. Like:</p>
         <p>this is a component in the wild!</p>
-        <div style={{backgroundColor:'#000',padding:'40px',borderRadius:'4px',textAlign:'center'}}>
-          <YOUR_COMPONENT />
+        <div
+          style={{
+            border: '2px solid #000',
+            padding: '40px',
+            borderRadius: '4px',
+            textAlign: 'center',
+          }}>
+          <ExampleComponent className="some-class-name" propName="make some context">
+            Wow context
+          </ExampleComponent>
         </div>
       </div>
     );
-});`;
+  });
+`;
 
 addons.register('mollie/ghostwriter', () => {
   addons.addPanel('mollie/ghostwriter/panel', {

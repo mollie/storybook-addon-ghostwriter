@@ -24,6 +24,7 @@ const getKnob = ({ propType, property, defaultValue }, isRequired) => {
     // A node will return a <span /> with text knob
     case 'Node':
     case 'node':
+    case 'element':
     case 'ReactElement':
     case 'ReactNode': {
       let showChild = true;
