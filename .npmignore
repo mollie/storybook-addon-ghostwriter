@@ -1,0 +1,6 @@
+src/
+rollup.config.js
+.idea/
+.env
+*.log
+.*
