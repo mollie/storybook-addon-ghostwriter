@@ -70,39 +70,82 @@ Now, write your stories with Ghostwriter.
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-// Load Ghostwriter
+// Story components
 import ghostwriter from 'storybook-addon-ghostwriter';
 
-// Component
-import ListItem from './index';
-import ListItemWrapper from 'components/ListItemWrapper';
-import DownloadIcon from 'images/icons/download.svg';
-import UploadIcon from 'images/icons/upload.svg';
+// This is an example component.
+import PropTypes from 'prop-types';
 
-const getDefaultProps = () => ({
-  icon: <DownloadIcon />,
-  iconSize: 'regular',
-});
-const markdown = `Accessible modal dialog component for React.`;
+export default class ExampleComponent extends React.Component {
+  render() {
+    const { className, propName, children } = this.props;
+    return (
+      <div className={className}>
+        <strong>{propName}</strong> {children}
+      </div>
+    );
+  }
+}
 
-storiesOf('UI', module)
+ExampleComponent.propTypes = {
+  className: PropTypes.string,
+  propName: PropTypes.string.isRequired,
+  children: PropTypes.element,
+};
+
+/**
+ * Overwrite the default props This could be a knob form the knob addon.
+ * see https://github.com/storybooks/storybook/tree/master/addons/knobs
+ * It has to be function otherwise overwriting knobs won't work properly
+ * e.g. prop: text('knob text', 'knob'),
+ */
+const getDefaultProps = () => ({ className: 'overwrite' });
+const markdown = `# Markdown example`;
+
+storiesOf('components', module)
   .addDecorator(
     ghostwriter({
-      component: ListItem,
+      // Notice that we dont use angle brackets; '<' and '>'
+      component: ExampleComponent,
+      // This overwrites the knobs by docs
       componentProps: getDefaultProps,
+      // Extra info in markdown
       markdown: markdown,
-      additionalContext: <div>Additional content</div>,
+      /**
+       * Sometimes there is a need for additionalContext.
+       * This could be de case whenever a component needs an action from outside the prop scope.
+       * For example a Modal that waits for a ref to be called.
+       * <button onClick={()=> this.modalRef.open}>Open</button>
+       * Then additionalContext is the perfect place. Most of the time you won't need it though
+       * because knobs will be your friend.
+       */
+      additionalContext: <span>i'll render normal JSX</span>,
     }),
   )
-  .add('ListItem', () => {
+  .add('ExampleComponent', () => {
     return (
-      <ListItemWrapper>
-        <ListItem icon={<UploadIcon />} iconSize="large" />
-        <ListItem icon={<UploadIcon />} iconSize="large" />
-      </ListItemWrapper>
+      <div>
+        <p>Put your component in context. Like:</p>
+        <p>this is a component in the wild!</p>
+        <div
+          style={{
+            border: '2px solid #000',
+            padding: '40px',
+            borderRadius: '4px',
+            textAlign: 'center',
+          }}>
+          <ExampleComponent className="some-class-name" propName="make some context">
+            Wow context
+          </ExampleComponent>
+        </div>
+      </div>
     );
   });
 ```
+
+## Snippet for VSCode, Atom and Sublime-text
+
+One of the goals of Ghostwriter is that it tries to optimize your SWT™️ (story write time). Therefore a snippet in your editor could help you out a lot. We made one for you with he fantastic snippet-generator by Pawel Grzybek. So if you use Atom, Sublime-text or VSCode be sure to [check out the snippet]('https://snippet-generator.app/?description=storybook-ghostwriter&tabtrigger=ghostwriter&snippet=import+React+from+%27react%27%3B%0Aimport+%7B+storiesOf+%7D+from+%27%40storybook%2Freact%27%3B%0A%0A%2F%2F+Story+components%0Aimport+ghostwriter+from+%27storybook-addon-ghostwriter%27%3B%0A%0A%2F%2F+import+the+component.%0Aimport+%241+from+%27.%2Findex%27%3B%0A%0A%2F%2F+Overwrite+of+default+props+This+could+be+a+knob+form+the+knob+addon%0Aconst+getDefaultProps+%3D+%28%29+%3D%3E+%28%7B%242%7D%29%3B%0Aconst+markdown+%3D+%60%243%60%3B%0A%0AstoriesOf%28%27components%27%2C+module%29%0A++.addDecorator%28%0A++++ghostwriter%28%7B%0A++++++component%3A+%241%2C%0A++++++componentProps%3A+getDefaultProps%2C%0A++++++markdown%3A+markdown%2C%0A++++++%2F%2F+additionalContext%3A+%3Cspan%3Eadditional+content%3C%2Fspan%3E%2C%0A++++%7D%29%2C%0A++%29%0A++.add%28%27%241%27%2C+%28%29+%3D%3E+%7B%0A++++return+%28%0A++++++%3C%241+%2F%3E%0A++++%29%3B%0A++%7D%29%3B&mode=vscode')
 
 ## Contributing
 
