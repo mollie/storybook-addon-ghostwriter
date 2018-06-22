@@ -121,7 +121,7 @@ storiesOf('components', module)
        * Then additionalContext is the perfect place. Most of the time you won't need it though
        * because knobs will be your friend.
        */
-      additionalContext: <span>i'll render normal JSX</span>,
+      additionalContext: <span>This is JSX</span>,
     }),
   )
   .add('ExampleComponent', () => {
