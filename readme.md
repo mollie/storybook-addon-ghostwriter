@@ -115,7 +115,7 @@ storiesOf('components', module)
       markdown: markdown,
       /**
        * Sometimes there is a need for additionalContext.
-       * This could be de case whenever a component needs an action from outside the prop scope.
+       * This could be the case whenever a component needs an action from outside the prop scope.
        * For example a Modal that waits for a ref to be called.
        * <button onClick={()=> this.modalRef.open}>Open</button>
        * Then additionalContext is the perfect place. Most of the time you won't need it though
