@@ -6,7 +6,7 @@
 
 Storybook Addon Ghostwriter allows you to write your Storybook stories faster. Your codebase changes continuously and you don't want to update your Storybook stories every time your components change. Ghostwriter extracts your components’ `PropTypes` / `Flow types` and allows you to edit React props dynamically using the Storybook UI. Your components get documented automatically by providing a static overview of the available props. Ghostwriter generates code snippets for both your component and your Storybook stories, allowing you to ship new components faster.
 
-This plugin is only works with React. All the other frameworks that Storybook supports are not supported right now. Feel free to contribute. 
+This plugin currently only works with React. Other frameworks that are supported by Storybook are currently not supported by Ghostwriter. Feel free to contribute. 
 
 ### Advantages
 
